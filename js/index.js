@@ -25,10 +25,22 @@ var app = {
     //
     // Bind any events that are required on startup. Common events are:
     // `load`, `deviceready`, `offline`, and `online`.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('scan').addEventListener('click', this.scan, false);
-        document.getElementById('encode').addEventListener('click', this.encode, false);
+    bindEvents: function () {
+        try{
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+
+            var scanBtn = document.getElementById('scan');
+            if (scanBtn) {
+                scanBtn.addEventListener('click', this.scan, false);
+            }
+
+            var encondeBtn = document.getElementById('encode');
+            if (encondeBtn) {
+                encondeBtn.addEventListener('click', this.encode, false);
+            }
+        } catch (error) {
+            alert(error);
+        }
     },
 
     // deviceready Event Handler
