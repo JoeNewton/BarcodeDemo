@@ -52,7 +52,7 @@ body {
     left:50%;
     top:50%;
     height:300px;                   /* text area height */
-    width:230px;                   /* text area width */
+    width:250px;                   /* text area width */
     text-align:center;
     margin: -150px 0 0 -115px;
     
@@ -66,10 +66,11 @@ body {
 }
 
 .btn {
-    border-radius: 6px;
-    width: 100px;
+    border-radius: 10px;
+    width: 200px;
     margin: auto;
-    padding: 10px;
+    padding: 20px;
+    font-size: 30px;
 }
 
 .btn-blue {
