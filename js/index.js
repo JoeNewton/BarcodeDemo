@@ -40,45 +40,53 @@ var app = {
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+    receivedEvent: function (id) {
+        try{
+            var parentElement = document.getElementById(id);
+            var listeningElement = parentElement.querySelector('.listening');
+            var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+            listeningElement.setAttribute('style', 'display:none;');
+            receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+            console.log('Received Event: ' + id);
+        } catch (error) {
+            alert(error);
+        }
     },
 
-    scan: function() {
-        console.log('scanning');
+    scan: function () {
+        try{
+            console.log('scanning');
         
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+            var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) { 
+            scanner.scan( function (result) { 
 
-            //alert("We got a barcode\n" + 
-            //"Result: " + result.text + "\n" + 
-            //"Format: " + result.format + "\n" + 
-            //"Cancelled: " + result.cancelled);  
+                //alert("We got a barcode\n" + 
+                //"Result: " + result.text + "\n" + 
+                //"Format: " + result.format + "\n" + 
+                //"Cancelled: " + result.cancelled);  
 
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
-            //document.getElementById("info").innerHTML = result.text;
-            console.log(result);
-            /*
-            if (args.format == "QR_CODE") {
-                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-            }
-            */
-            window.open(result.text, '_system', 'location=yes');
-        }, function (error) { 
-            //console.log("Scanning failed: ", error); 
-            alert("Scanning failed: ", error);
-        } );
+                console.log("Scanner result: \n" +
+                     "text: " + result.text + "\n" +
+                     "format: " + result.format + "\n" +
+                     "cancelled: " + result.cancelled + "\n");
+                //document.getElementById("info").innerHTML = result.text;
+                console.log(result);
+                /*
+                if (args.format == "QR_CODE") {
+                    window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
+                }
+                */
+                window.open(result.text, '_system', 'location=yes');
+            }, function (error) { 
+                //console.log("Scanning failed: ", error); 
+                alert("Scanning failed: ", error);
+            } );
+        } catch (error) {
+            alert(error);
+        }
     },
 
     encode: function() {
